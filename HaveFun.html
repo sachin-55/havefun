@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Having Fun</title>
+    <link rel='icon' href="https://static.thenounproject.com/png/118627-200.png" type="image/png" sizes="32x32">
+    <style>
+        *,*::after,*::before{
+            padding:0;
+            margin:0;
+        }
+        :root{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+        /* ------------------------------------------------------------------------------ */
+        #header{
+            background-color: aquamarine;
+            width: 100%;
+            height: 100px;
+        }
+        #header h1{
+            text-align: center;
+            color: beige;
+            font-size: 36px;
+            text-shadow: 0px 0px 2px black;
+            padding-top: 20px;
+        }
+        /* ------------------------------------------------------------------------------ */
+        #main{
+            background-color: antiquewhite;
+        }
+        .top{
+            background-color: rgb(199, 253, 252);
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .top .restTimer{
+            background-color: rgba(30, 45, 44, 0.42);
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px rgb(58, 50, 44) solid;
+            box-shadow: 1px 1px 1px rgb(16, 94, 70),
+                        2px 2px 1px rgb(16, 94, 70),
+                        inset 1px 1px 1px rgb(175, 216, 204),
+                        inset 2px 2px 1px  rgb(175, 216, 204);
+            font-weight: bold;
+            margin: 10px 30px; 
+
+
+        }
+        .top .restTimer input{
+            width: 100px;
+            font-size: 20px;
+        }
+        .top .ok {
+            border: 1px solid white;
+            background-color: rgb(77, 131, 131);
+            color: antiquewhite;
+            margin: 5px 0 0 0;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .top .ok:hover{
+            background-color: rgb(111, 197, 197);
+        }
+        .top .ok:active{
+            background-color: aqua;
+        }
+
+        .top .musicSelect{
+            background-color: rgba(30, 45, 44, 0.42);
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px rgb(58, 50, 44) solid;
+            box-shadow: -1px 1px 1px rgb(16, 94, 70),
+                        -2px 2px 1px rgb(16, 94, 70),
+                        inset -1px 1px 1px rgb(175, 216, 204),
+                        inset -2px 2px 1px  rgb(175, 216, 204);       
+            font-weight: bold;
+            margin: 10px 30px; 
+        }
+        .top .musicSelect .musicRadio{
+            display: flex;
+            margin: 10px 0 0 0;
+            font-weight: 400;
+            align-items: center;
+            justify-content: center;
+        }
+        .top .musicSelect label {
+            padding-left: 5px;
+        }
+
+        .middle{
+            background-color: rgb(133, 179, 159);
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .middle .leftWrapper{
+            border-right: 1px solid #000;
+            padding: 0 20px ;
+        }
+        .middle .totalTime{
+            width: 120px;
+            height: 120px;
+            background-color: aliceblue;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+
+        }
+        .middle .totalTime > div{
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+        }
+        .middle .totalTime > span{
+            font-weight: 100;
+            margin: 5px 0 0 0;
+        }
+        .middle .numberOfPause{
+            width: 120px;
+            height: 120px;
+            background-color: aliceblue;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .middle .numberOfPause > div{
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+        }
+        .middle .numberOfPause > span{
+            font-weight: 100;
+            margin: 5px 0 0 0;
+        }
+        .middle .playPause{
+            margin: 50px;
+            background-color: rgb(74, 150, 143);
+            width: 250px;
+            height: 250px;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid rgb(28, 68, 70);
+            color: rgb(0, 221, 255);
+
+        }
+        .middle .playPause:hover{
+            background-color: rgba(23, 94, 70, 0.705);
+        }
+
+        .middle .restTimeDisplayContainer{
+            background-color: aliceblue;
+            width: 100px;
+            height: 100px;
+            border-radius:50% ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .middle .restTimeDisplayContainer div:nth-child(1){
+            font-weight: bold;
+            border-bottom: 1px solid black;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .bottom{
+            background-color:  rgb(199, 253, 252);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+        }
+        .bottom .endBtn{
+            border: 1px solid #000;
+            padding: 10px 30px;
+            background-color: rgb(31, 85, 86);
+            color: aliceblue;
+            font-size: 32px;
+            font-weight: bolder;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .bottom .endBtn:hover{
+            background-color: rgb(16, 45, 46);
+            color: rgb(255, 255, 255);
+            border: 1px solid transparent;
+            box-shadow: 1px 1px 1px rgb(170, 219, 212),
+                        2px 2px 1px  rgb(5, 31, 60),
+                        3px 3px 1px rgb(170, 219, 212),
+                        4px 4px 1px  rgb(5, 31, 60);
+            
+
+        }
+        .bottom .endBtn:active{
+            background-color: rgb(0, 247, 255);
+
+        }
+        
+
+        /* ------------------------------------------------------------------------------ */
+        #footer{
+            height: 100px;
+            background-color: black;
+            color: beige;
+            font-size: 18px;
+            text-align: center;
+        }
+        #footer h1,
+        #footer span{
+            padding-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <section id='header'>
+        <h1>Let's Have Fun</h1>
+
+    </section>
+    <section id='main'>
+
+        <div class="top">
+            <div class="restTimer">
+                <div>
+                    Rest Time <br/>
+                    (in sec)
+                </div>
+                <input type="number" id='restTime'>
+                <div id='ok1' class="ok">OK</div>
+            </div>
+            <div class="musicSelect">
+                <div>
+                    Select Music
+                </div>
+                <div class="musicRadio">
+                    <input type='radio' name='music' value='music1' id='music1' class="music1"/>
+                    <label for="music1">Music1</label><br>
+                </div>
+                <div class="musicRadio">
+                    <input type='radio' name='music' value='music2' id='music2' class="music2"/>
+                    <label for="music2">Music2</label><br>
+                </div>
+                <div id='ok2' class="ok">OK</div>
+
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="leftWrapper">
+                <div class="totalTime" id="totalTime">
+                    <div>
+                        Total Time
+                        <br/> Elapsed
+                    </div>
+                    <span id='totalTimeElapsed' class="totalTimeElapsed">123sec</span>
+                </div>
+                <div class="numberOfPause" id="numberOfPause">
+                    <div>Number Of 
+                        <br/> Pause
+                    </div>
+                    <span id='pauseCount' class="pauseCount">123</span>
+                </div>
+            </div>
+            <div class="playPause" id="playPause">Start</div>
+            <div class="restTimeDisplayContainer" >
+                <div>Rest Time</div>
+                <div><span id="restTimeDisplay">123</span>sec</div>
+            </div>
+
+        </div>
+
+        <div class="bottom">
+            <div id="endBtn" class="endBtn">
+                End
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <section id='footer'>
+        <h1>
+            Sachin Bhattarai
+        </h1>
+        <span>&copy;2020</span>
+    </section>
+    <script>
+        
+    </script>
+</body>
+</html>
