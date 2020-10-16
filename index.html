@@ -376,8 +376,11 @@
 
         const bgMusic1 = new Audio();
         bgMusic1.src = 'sounds/large_waterfall.mp3';
+        bgMusic1.loop = true;
         const bgMusic2 = new Audio();
         bgMusic2.src = 'sounds/SeaWaves.mp3';
+        bgMusic2.loop = true;
+
         const startSound= new Audio();
         startSound.src = 'sounds/starting_pistol.mp3';
         const timeUp = new Audio();
@@ -386,7 +389,6 @@
 
         let restTimeInput = 20;
         let selectedMusic = bgMusic1;
-        selectedMusic.loop= true;
         let pauseCounter = 0;
         let timeElapse = 0;
         let play = false;
